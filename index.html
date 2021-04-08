@@ -9,12 +9,14 @@
 </head>
 <body>
   <div id="root">
-    <button @click="generate">Generate Mail</button>
+    <button @click="generate" v-if="mails.length == []">Generate Mail</button>
 
-    <ul v-for="(mail,i) in mails">
+    <ul v-for="(mail,i) in mails" v-if="mails.length == 10">
       <li>{{ mails[i] }}</li>
     </ul>
 
+    <button
+      @click="remove" v-if="mails.length == 10">Remove mail</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
